@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .skills-section {
+            padding: 120px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .skills-category {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .skills-category:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skills-category h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .skills-category h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            position: relative;
+            animation: fillBar 1.5s ease-in-out forwards;
+            transform-origin: left;
+        }
+        
+        @keyframes fillBar {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+        
+        .other-skills {
+            margin-top: 60px;
+        }
+        
+        .other-skills h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .other-skills h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .other-skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .other-skill {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .other-skill:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .achievements-section {
+            margin-top: 60px;
+        }
+
+        .achievement-item {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .skills-container {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>My Skills</h1>
+                <p>Technical expertise and proficiency levels</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h2>Engineering Software</h2>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>SOLIDWORKS</h3>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Ansys</h3>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>COMSOL Multiphysics</h3>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Abaqus CAE</h3>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>AutoCAD</h3>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h2>Programming & Data Analysis</h2>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>C</h3>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Python</h3>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>MATLAB</h3>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Origin</h3>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h2>Documentation & Design</h2>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Microsoft Office Suite</h3>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>EndNote</h3>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Adobe Photoshop</h3>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Adobe Lightroom</h3>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <h3>Adobe Illustrator</h3>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="other-skills">
+                <div class="section-title">
+                    <h2>Leadership Roles</h2>
+                </div>
+                <div class="other-skills-container">
+                    <div class="other-skill">
+                        <i class="fas fa-users"></i>
+                        <span>Sector Co-Lead at Team Kiloflight</span>
+                    </div>
+                    <div class="other-skill">
+                        <i class="fas fa-cogs"></i>
+                        <span>CEO at LOOP (Control Engineering Club)</span>
+                    </div>
+                    <div class="other-skill">
+                        <i class="fas fa-robot"></i>
+                        <span>Co-ordinator at KRIoTIC</span>
+                    </div>
+                    <div class="other-skill">
+                        <i class="fas fa-users"></i>
+                        <span>Vice President at Chittagong Association of KUET</span>
+                    </div>
+                    <div class="other-skill">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Treasurer at Dream-Blood Donation Society</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

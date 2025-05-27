@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .projects-section {
+            padding: 120px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+        
+        .project-links a:hover {
+            background-color: #fff;
+        }
+        
+        .project-details {
+            padding: 20px;
+        }
+        
+        .project-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-details p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech {
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: rgba(0, 200, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        
+        .project-documentation {
+            margin-top: 15px;
+        }
+        
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: #000;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .doc-link:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .doc-link i {
+            margin-right: 8px;
+        }
+        
+        /* Gallery Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            width: 80%;
+            max-width: 900px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1010;
+        }
+        
+        .gallery {
+            display: none;
+        }
+        
+        .gallery.active {
+            display: block;
+        }
+        
+        .gallery img {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            display: none;
+        }
+        
+        .gallery img.active {
+            display: block;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-size: 24px;
+            padding: 16px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        .gallery-nav.prev {
+            left: 10px;
+        }
+        
+        .gallery-nav.next {
+            right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>My Projects</h1>
+                <p>Key engineering projects and achievements</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="asset/projects/project 1.jpg" alt="Formula Student Car Team">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fas fa-link"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="#" class="gallery-btn" onclick="openGallery('formula-car'); return false;"><i class="fas fa-images"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Formula Student Racing Car</h3>
+                        <p>First-ever KUET Formula Student team with mechanical control, fuel, cooling, and lubrication systems. Participated in Formula Student UK and Formula SAE-2023 Japan, successfully passing mechanical inspection.</p>
+                        <div class="tech-stack">
+                            <span class="tech">Mechanical Design</span>
+                            <span class="tech">SOLIDWORKS</span>
+                            <span class="tech">Automotive Systems</span>
+                            <span class="tech">Aerodynamics</span>
+                        </div>
+                        <div class="project-documentation">
+                            <a href="asset/Titu Nath cv.pdf (1).pdf" target="_blank" class="doc-link">
+                                <i class="fas fa-file-pdf"></i> View Project Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="asset/projects/project 2.jpg" alt="Thermoelectric Refrigerator">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fas fa-link"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Thermoelectric Refrigerator</h3>
+                        <p>Constructed and tested a thermoelectric refrigerator using Peltier effect, analyzing cooling performance under various conditions.</p>
+                        <div class="tech-stack">
+                            <span class="tech">Thermodynamics</span>
+                            <span class="tech">Electronics</span>
+                            <span class="tech">Data Analysis</span>
+                            <span class="tech">Thermal Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="gallery-container">
+                <!-- Formula Car Gallery -->
+                <div id="formula-car" class="gallery">
+                    <img src="asset/projects/project 1.jpg" alt="KILO FLIGHT Team">
+                    <img src="https://via.placeholder.com/800x600/222/666?text=Car+Design" alt="Car Design">
+                    <img src="https://via.placeholder.com/800x600/222/666?text=Car+Testing" alt="Car Testing">
+                </div>
+                <!-- Add more galleries for other projects here -->
+            </div>
+            <button class="gallery-nav prev">&#10094;</button>
+            <button class="gallery-nav next">&#10095;</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery functionality
+        let currentGallery = null;
+        let currentSlide = 0;
+        
+        function openGallery(galleryId) {
+            const modal = document.getElementById('gallery-modal');
+            const galleries = document.querySelectorAll('.gallery');
+            
+            // Hide all galleries
+            galleries.forEach(gallery => {
+                gallery.classList.remove('active');
+            });
+            
+            // Show the selected gallery
+            currentGallery = document.getElementById(galleryId);
+            currentGallery.classList.add('active');
+            
+            // Show the first image
+            const slides = currentGallery.querySelectorAll('img');
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            currentSlide = 0;
+            slides[currentSlide].classList.add('active');
+            
+            // Show the modal
+            modal.style.display = 'block';
+        }
+        
+        // Close modal
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('gallery-modal').style.display = 'none';
+        });
+        
+        // Next slide
+        document.querySelector('.gallery-nav.next').addEventListener('click', function() {
+            if (!currentGallery) return;
+            
+            const slides = currentGallery.querySelectorAll('img');
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        });
+        
+        // Previous slide
+        document.querySelector('.gallery-nav.prev').addEventListener('click', function() {
+            if (!currentGallery) return;
+            
+            const slides = currentGallery.querySelectorAll('img');
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-section {
+            padding: 120px 0 60px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: justify;
+        }
+        
+        .about-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .education-experience {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .column h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-item .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item p {
+            font-size: 0.95rem;
+        }
+        
+        .download-cv {
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .professional-summary {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .professional-summary h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .professional-summary p {
+            line-height: 1.7;
+        }
+
+        .research-publications {
+            margin-top: 40px;
+        }
+
+        .research-item {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .research-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .other-skills {
+            margin-top: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .other-skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .other-skill {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .other-skill:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .about-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="asset/IMG_2105-removebg-preview.png" alt="Titu Nath Profile Picture">
+                </div>
+                <div class="about-text">
+                    <h1>About Me</h1>
+                    <p>As a recent Mechanical Engineering graduate from KUET with a strong academic record (CGPA: 3.62/4.00), I have a proven history of success in national and international technical competitions and leadership experience that showcases my innovative thinking and dedication to excellence. My passion lies in biomechanics, bioengineering, cardiovascular fluid mechanics, hemodynamics, advanced fluid dynamics, multiphase flow, aerodynamics, heat-transfer problems, and composite materials.</p>
+                    <p>While maintaining academic excellence in research, I've actively led formula student racing teams and innovative engineering projects that have sharpened my technical expertise and problem-solving capabilities. Complementing my professional development, my dedication to organizing life-saving blood donation networks during emergencies has instilled a profound sense of social responsibility. This unique combination of engineering acumen and humanitarian commitment drives my ambition to develop solutions that address complex technical challenges while creating meaningful impact for society.</p>
+                    <a href="asset/Titu Nath cv.pdf (1).pdf" class="btn btn-primary download-cv" target="_blank">Download CV</a>
+                </div>
+            </div>
+
+            <div class="professional-summary">
+                <h2>Professional Summary</h2>
+                <p>I am enthusiastic about researching biomechanics, bioengineering, cardiovascular fluid mechanics, hemodynamics, advanced fluid dynamics, multiphase flow, aerodynamics, heat-transfer related problems, and composite materials. I am eager to work on collaborative mechanical engineering projects (Like: Control Engineering) to solve complex challenges.</p>
+            </div>
+            
+            <div class="education-experience">
+                <div class="column">
+                    <h2>Education</h2>
+                    <div class="timeline-item">
+                        <h3>Bachelor of Science in Mechanical Engineering</h3>
+                        <div class="date">January 2020 - February 2025 (Expected)</div>
+                        <p>Khulna University of Engineering & Technology (KUET)</p>
+                        <p>CGPA: 3.62/4.00 (Upto 7th semester)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <div class="date">July 2017 - December 2019</div>
+                        <p>Chittagong Engineering University School & College</p>
+                        <p>GPA: 5.00/5.00</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <div class="date">January 2012 - January 2017</div>
+                        <p>Rangunia Khilmogal Rashik High School</p>
+                        <p>GPA: 5.00/5.00</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h2>Experience</h2>
+                    <div class="timeline-item">
+                        <h3>KILO FLIGHT (Formula Student Team)</h3>
+                        <div class="date">4 years 3 months</div>
+                        <h4>Sector Co-Lead</h4>
+                        <div class="date">June 2024 - Present (1 year)</div>
+                        <p>Aerodynamics, Body & Composite at Team Kiloflight</p>
+                        <p>Working Fuel, Cooling & Lubrication System in Formula Student Racing Car (Combustion Vehicle)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>KILO FLIGHT (Formula Student Team)</h3>
+                        <h4>Executive Member</h4>
+                        <div class="date">August 2022 - June 2024 (1 year 11 months)</div>
+                        <p>Working with the Aerodynamics, Body & Composite team</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>KILO FLIGHT (Formula Student Team)</h3>
+                        <h4>Trainee Member</h4>
+                        <div class="date">March 2021 - July 2022 (1 year 5 months)</div>
+                        <p>Working with the Formula Student Racing Car team</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>HAMKO Group</h3>
+                        <h4>Intern</h4>
+                        <div class="date">July 2023 (1 month)</div>
+                        <p>Observed manufacturing processes, quality control systems, metal fabrication techniques, and battery production procedures.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-skills">
+                <div class="section-title">
+                    <h2>Languages</h2>
+                </div>
+                <div class="other-skills-container">
+                    <div class="other-skill">
+                        <i class="fas fa-language"></i>
+                        <span>Bangla (Native or Bilingual)</span>
+                    </div>
+                    <div class="other-skill">
+                        <i class="fas fa-language"></i>
+                        <span>English (Professional Working)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
