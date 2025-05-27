@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .achievements-section {
+            padding: 120px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 40px;
+        }
+        
+        .achievement-box {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .achievement-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .achievement-box h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .achievement-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .achievement-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .achievement-item .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .achievement-item p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .achievement-item ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        
+        .achievement-item ul li {
+            margin-bottom: 5px;
+            list-style-type: disc;
+        }
+        
+        @media (max-width: 992px) {
+            .achievements-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="achievements.html" class="active">Achievements</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="achievements-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>My Achievements</h1>
+                <p>Recognition, awards, and accomplishments</p>
+            </div>
+            
+            <div class="achievements-container">
+                <div class="achievement-box">
+                    <h2>International Events</h2>
+                    <div class="achievement-item">
+                        <h3>Formula Student UK</h3>
+                        <div class="date">2021-2022</div>
+                        <p>Participated as part of KILO FLIGHT (Concept Class)</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Formula SAE Japan</h3>
+                        <div class="date">2023</div>
+                        <p>On-site participation with successful completion of mechanical inspection</p>
+                        <p>Position: Overall 32/77; Cost-29/77; Design-30/77; BPP-32/77</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h2>Academic Awards and Scholarships</h2>
+                    <div class="achievement-item">
+                        <h3>Technical Scholarship | Merit-Based</h3>
+                        <div class="date">2021-2024</div>
+                        <p>Scholarship Recipient throughout undergraduate studies</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Dean's Award</h3>
+                        <div class="date">2022-2023</div>
+                        <p>For maintaining CGPA of 3.75 or above in one academic year</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h2>Certifications</h2>
+                    <div class="achievement-item">
+                        <h3>CSWA (Certified SOLIDWORKS Associate)</h3>
+                        <p>Professional certification demonstrating competency in SOLIDWORKS 3D CAD software</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Introduction to AutoCAD</h3>
+                        <div class="date">From EDGE</div>
+                        <p>Professional certification in AutoCAD fundamentals and applications</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Introduction to CFD</h3>
+                        <p>Certification in Computational Fluid Dynamics fundamentals</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Safe Blood Transfusion Training</h3>
+                        <p>Certification in safe blood donation and transfusion practices</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h2>Extracurricular Certificates</h2>
+                    <div class="achievement-item">
+                        <h3>Best Volunteer Award | Volunteer Excellence</h3>
+                        <div class="date">2023</div>
+                        <p>Recognized for exceptional commitment to voluntary blood donation services, organizing emergency blood donation campaigns, and maintaining a database of rare blood types to help patients in critical conditions. This effort contributed to saving numerous lives during medical emergencies.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Best Co-Organizer | Dream Volunteer Blood Donation Team</h3>
+                        <div class="date">2023</div>
+                        <p>Awarded for leadership in coordinating blood donation initiatives across campus, organizing awareness programs about the importance of regular blood donation, and developing an efficient system for emergency response that significantly improved access to blood for patients in urgent need.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>1st Runner-Up | Diversity_Season 5 Photography Exhibition</h3>
+                        <div class="date">2023</div>
+                        <p>Recognized for exceptional photography skills in capturing the cultural diversity and technical innovation at KUET.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Presentation Award</h3>
+                        <p>From KUIC (KUET University Innovation Challenge)</p>
+                        <p>Awarded for delivering an outstanding technical presentation on an innovative engineering solution, demonstrating exceptional communication skills and the ability to effectively convey complex technical concepts to diverse audiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
