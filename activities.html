@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .activities-section {
+            padding: 120px 0 60px;
+        }
+        
+        .container-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .activities-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .activity-box {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .activity-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .activity-box h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .activity-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .activity-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            z-index: 2;
+        }
+        
+        .activity-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: #555;
+            z-index: 1;
+        }
+        
+        .activity-item:last-child::after {
+            display: none;
+        }
+        
+        .position-timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+        }
+        
+        .position-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            z-index: 2;
+        }
+        
+        .position-timeline::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 18px;
+            width: 2px;
+            height: calc(100% + 5px);
+            background-color: #555;
+            z-index: 1;
+        }
+        
+        .position-timeline:last-child::after {
+            display: none;
+        }
+        
+        .position-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .position-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        
+        .position-description {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .activity-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .activity-item .date {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .activity-item p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .activity-item ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        
+        .activity-item ul li {
+            margin-bottom: 5px;
+            list-style-type: disc;
+        }
+        
+        .full-width-section {
+            grid-column: 1 / -1;
+        }
+        
+        .industrial-visits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .visit-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .visit-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 200, 255, 0.1);
+        }
+        
+        .visit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .visit-card .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 992px) {
+            .activities-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="activities.html" class="active">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="activities-section">
+        <div class="container-wide">
+            <div class="section-title">
+                <h1>Co-curricular & Extracurricular Activities</h1>
+                <p>Leadership roles and community involvement</p>
+            </div>
+            
+            <div class="activities-container">
+                <div class="activity-box">
+                    <h2>Co-curricular Activities</h2>
+                    <div class="activity-item">
+                        <h3>KILO FLIGHT</h3>
+                        <div class="date">4 years 3 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Sector Co-Lead</strong> (June 2024 - Present)</div>
+                            <div class="position-description">Aerodynamics, Body & Composite at Team Kiloflight</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Executive Member</strong> (August 2022 - June 2024)</div>
+                            <div class="position-description">Working with the Aerodynamics, Body & Composite team</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Trainee Member</strong> (March 2021 - July 2022)</div>
+                            <div class="position-description">Working with the Formula Student Racing Car team</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <h3>LOOP (Control Engineering Club)</h3>
+                        <div class="date">2 years 4 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Chief Executive Officer</strong> (February 2024 - Present)</div>
+                            <div class="position-description">Leading the club's operations and strategic initiatives</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Assistant Research and Quality Enhancement Officer</strong> (February 2023 - January 2024)</div>
+                            <div class="position-description">Overseeing research projects and quality standards</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <h3>KRIoTIC (KUET Robotics and IoT Innovation Club)</h3>
+                        <div class="date">2 years 4 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Co-ordinator</strong> (February 2024 - Present)</div>
+                            <div class="position-description">Coordinating robotics and IoT projects</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Junior Executive</strong> (February 2023 - January 2024)</div>
+                            <div class="position-description">Assisting with project implementation and club activities</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <h3>Institution of Mechanical Engineers</h3>
+                        <div class="date">June 2023 - Present (2 years)</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Student Affiliate Member</strong></div>
+                            <div class="position-description">Participating in professional development activities</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-box">
+                    <h2>Extracurricular Activities</h2>
+                    <div class="activity-item">
+                        <h3>KUET Photographic Society (KUETPS)</h3>
+                        <div class="date">5 years 4 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>President</strong> (April 2024 - Present)</div>
+                            <div class="position-description">Leading the society and its creative initiatives</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Joint Secretary</strong> (April 2023 - March 2024)</div>
+                            <div class="position-description">Managing society documentation and events</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Organizing Secretary</strong> (April 2022 - April 2023)</div>
+                            <div class="position-description">Coordinating events and organizational activities</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Executive</strong> (February 2020 - March 2022)</div>
+                            <div class="position-description">Supporting club activities and initiatives</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <h3>Dream-Blood Donation Society of KUET</h3>
+                        <div class="date">5 years 4 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Treasurer</strong> (February 2023 - Present) (2 years 4 months)</div>
+                            <div class="position-description">Managing finances and budget allocation</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Volunteer</strong> (February 2020 - January 2023) (3 years)</div>
+                            <div class="position-description">Recognized as Best Volunteer From 2K19 Batch for coordinating emergency blood donations, maintaining donor databases, and organizing life-saving campaigns across campus.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <h3>Chittagong Association of KUET</h3>
+                        <div class="date">5 years 4 months</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Vice President</strong> (January 2024 - Present)</div>
+                            <div class="position-description">Leading association activities and initiatives</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Cultural Secretary</strong> (April 2023 - February 2024)</div>
+                            <div class="position-description">Organizing cultural events and activities</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Organizing Secretary</strong> (February 2020 - April 2023)</div>
+                            <div class="position-description">Coordinating association events and activities</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <h3>Sanatani Student's Welfare Association</h3>
+                        <div class="date">2023 - Present</div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>President</strong> (2023 - Present)</div>
+                            <div class="position-description">Leading initiatives to promote cultural awareness and student welfare</div>
+                        </div>
+                        
+                        <div class="position-timeline">
+                            <div class="position-title"><strong>Secretary General</strong> (2022 - 2023)</div>
+                            <div class="position-description">Coordinating association activities and managing administrative affairs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-box full-width-section">
+                <h2>Organized Events</h2>
+                <div class="activity-item">
+                    <h3>Ignition - 2023</h3>
+                    <p>National Mechanical Festival (Organizing Member)</p>
+                </div>
+                <div class="activity-item">
+                    <h3>Workshop on Fundamentals of Automobile Engineering</h3>
+                    <p>Instructor & Planner</p>
+                </div>
+                <div class="activity-item">
+                    <h3>Workshop on C Programming and Introduction to Robotics</h3>
+                    <p>Instructor & Planner</p>
+                </div>
+                <div class="activity-item">
+                    <h3>Award Giving Ceremony of Blood Donors of KUET - 2024</h3>
+                    <p>Organizing Committee</p>
+                </div>
+                <div class="activity-item">
+                    <h3>Voluntary Blood Grouping Campaigns for Villagers</h3>
+                    <p>Organizer and Planner</p>
+                </div>
+            </div>
+            
+            <div class="activity-box full-width-section">
+                <h2>Industrial Visits</h2>
+                <p>Participated in industrial visits to gain practical industry knowledge and exposure to real-world engineering applications.</p>
+                
+                <div class="industrial-visits-container">
+                    <div class="visit-card">
+                        <h3>HAMKO Group</h3>
+                        <div class="date">2023</div>
+                        <p>Studied manufacturing processes and quality control systems. Observed metal fabrication and processing techniques. Learned about battery production and testing procedures.</p>
+                    </div>
+                    
+                    <div class="visit-card">
+                        <h3>Payra 1320 MW Thermal Power Plant</h3>
+                        <div class="date">2023</div>
+                        <p>Studied power generation systems and environmental control measures</p>
+                    </div>
+                    
+                    <div class="visit-card">
+                        <h3>Chattogram Port</h3>
+                        <div class="date">2024</div>
+                        <p>Observed logistics operations and container management systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

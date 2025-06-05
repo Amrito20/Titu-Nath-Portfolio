@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Publications - Titu Nath</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .research-section {
+            padding: 120px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .research-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .research-item {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .research-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .research-item h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .research-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .research-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        .research-meta-item i {
+            color: var(--primary-color);
+        }
+        
+        .research-content {
+            line-height: 1.8;
+        }
+        
+        .research-content p {
+            margin-bottom: 15px;
+        }
+        
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .tag {
+            padding: 5px 15px;
+            border-radius: 20px;
+            background-color: rgba(0, 200, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+        
+        .ongoing-research {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .completed-research {
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+        
+        .status-ongoing {
+            background-color: rgba(0, 200, 255, 0.15);
+            color: var(--primary-color);
+        }
+        
+        .status-completed {
+            background-color: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+        }
+        
+        .research-image {
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .research-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .research-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .explore-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: var(--primary-color);
+            color: #000;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 200, 255, 0.3);
+        }
+        
+        .explore-btn:hover {
+            background-color: #00a0cc;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 200, 255, 0.4);
+        }
+        
+        .explore-btn i {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Titu Nath</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="research-section">
+        <div class="container">
+            <div class="section-title">
+                
+                <!-- Research & Publications Section - Showcasing academic contributions and ongoing research work -->
+                <h1>Research & Publications</h1>
+                <p>MSc./PhD. Aspirant in Mechanical Engineering</p>
+            </div>
+            
+            <div class="research-container">
+                <div class="research-item ongoing-research">
+                    <h2>Hemodynamic Changes in Bifurcated Arteries with Varying Eccentricity Using Nanofluid Simulation <span class="status-badge status-ongoing">Ongoing</span></h2>
+                    <div class="research-meta">
+                        <div class="research-meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>January 2024 - Present</span>
+                        </div>
+                        <div class="research-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Undergraduate Thesis</span>
+                        </div>
+                        <div class="research-meta-item">
+                            <i class="fas fa-university"></i>
+                            <span>Khulna University of Engineering & Technology</span>
+                        </div>
+                    </div>
+                    <div class="research-content">
+                        <p>This research involves pioneering work to improve the hemodynamics of blood flow in bifurcated arteries using nanomedicine applications. The study focuses on computational fluid dynamics modeling to analyze how varying eccentricity in artery bifurcations affects blood flow patterns.</p>
+                        <p>The research aims to address various cardiovascular issues by utilizing nanofluid properties in biomedical applications. The computational study focuses on understanding how different bifurcation geometries impact critical hemodynamic factors such as wall shear stress, recirculation zones, and potential for atherosclerotic plaque formation.</p>
+                    </div>
+                    <div class="research-image">
+                        <img src="asset/research/Hemodynamic Research Visualization.jpg" alt="Hemodynamic Research Visualization">
+                    </div>
+                    <div class="research-tags">
+                        <span class="tag">Biomedical Engineering</span>
+                        <span class="tag">Computational Fluid Dynamics</span>
+                        <span class="tag">Nanofluids</span>
+                        <span class="tag">Hemodynamics</span>
+                        <span class="tag">Cardiovascular Research</span>
+                    </div>
+                    <a href="https://www.researchgate.net/profile/Titu-Nath" target="_blank" class="explore-btn">Explore Research <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="research-item completed-research">
+                    <h2>Thermoelectric Refrigeration: Analysis of Cooling Performance Using Peltier Effect <span class="status-badge status-completed">Completed</span></h2>
+                    <div class="research-meta">
+                        <div class="research-meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>November 2022 - December 2023</span>
+                        </div>
+                        <div class="research-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Course Project</span>
+                        </div>
+                        <div class="research-meta-item">
+                            <i class="fas fa-university"></i>
+                            <span>Khulna University of Engineering & Technology</span>
+                        </div>
+                    </div>
+                    <div class="research-content">
+                        <p>This research focused on the design, construction, and testing of a thermoelectric refrigerator utilizing the Peltier effect. The project explored alternative cooling technologies with potential environmental benefits compared to traditional vapor-compression refrigeration systems.</p>
+                        <p>A working prototype was built to observe cooling effects under various operating conditions. The research analyzed the relationship between power input, temperature differential, and cooling efficiency. Results demonstrated the feasibility of thermoelectric cooling for small-scale applications while highlighting current efficiency limitations compared to conventional systems.</p>
+                    </div>
+                    <div class="research-image">
+                        <img src="asset/research/Thermoelectric Refrigeration Research.jpg" alt="Thermoelectric Refrigeration Research">
+                    </div>
+                    <div class="research-tags">
+                        <span class="tag">Thermoelectric Cooling</span>
+                        <span class="tag">Peltier Effect</span>
+                        <span class="tag">Alternative Refrigeration</span>
+                        <span class="tag">Thermal Engineering</span>
+                        <span class="tag">Energy Efficiency</span>
+                    </div>
+                    <a href="https://www.researchgate.net/profile/Titu-Nath" target="_blank" class="explore-btn">Explore Research <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
