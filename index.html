@@ -4,31 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Portfolio</title>
+    <title>Portfolio | Titu Nath</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js for Vanta backgrounds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js effects -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.cells.min.js"></script>
 </head>
 <body>
+    <!-- Animated background container -->
+    <div id="vanta-bg" class="vanta-background"></div>
+    
+    <!-- Page loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html">Portfolio</a>
+                    <a href="index.html" class="logo-text">
+                        <span class="logo-char">T</span>
+                        <span class="logo-char">i</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">u</span>
+                        <span class="logo-char"> </span>
+                        <span class="logo-char">N</span>
+                        <span class="logo-char">a</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">h</span>
+                    </a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="achievements.html">Achievements</a></li>
-                    <li><a href="activities.html">Activities</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" class="active nav-item" data-text="Home">Home</a></li>
+                    <li><a href="about.html" class="nav-item" data-text="About">About</a></li>
+                    <li><a href="research.html" class="nav-item" data-text="Research">Research</a></li>
+                    <li><a href="projects.html" class="nav-item" data-text="Projects">Projects</a></li>
+                    <li><a href="skills.html" class="nav-item" data-text="Skills">Skills</a></li>
+                    <li><a href="achievements.html" class="nav-item" data-text="Achievements">Achievements</a></li>
+                    <li><a href="activities.html" class="nav-item" data-text="Activities">Activities</a></li>
+                    <li><a href="contact.html" class="nav-item" data-text="Contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                <div class="nav-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <div class="theme-icon">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        </div>
+                    </button>
+                    <button class="bg-toggle" id="bgToggle" aria-label="Change background effect">
+                        <i class="fas fa-magic"></i>
+                        <span class="bg-toggle-text">Background</span>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -37,33 +86,119 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hi, I'm <span class="highlight">Titu Nath</span></h1>
-                    <h2>MSc./PhD. Aspirant | Mechanical Engineer</h2>
-                    <p>Sector Co-Lead (Aerodynamics, Body & Composite) at Team Kiloflight | Co-Ordinator at KRIoTIC | CEO of LOOP | President of KUETPS</p>
+                <div class="hero-text text-card">
+                    <div class="hero-greeting">
+                        <span class="greeting-word">Hi,</span>
+                        <span class="greeting-word">I'm</span>
+                    </div>
+                    <h1 class="hero-name">
+                        <span class="highlight name-char">T</span><span class="name-char">i</span><span class="name-char">t</span><span class="name-char">u</span>
+                        <span class="name-char"> </span>
+                        <span class="highlight name-char">N</span><span class="name-char">a</span><span class="name-char">t</span><span class="name-char">h</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="cursor">|</span>
+                    </h2>
+                    <p class="hero-description">Sector Co-Lead (Aerodynamics, Body & Composite) at Team Kiloflight | Co-Ordinator at KRIoTIC | CEO of LOOP | President of KUETPS</p>
                     <div class="cta-buttons">
-                        <a href="projects.html" class="btn btn-primary">View My Work</a>
-                        <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+                        <a href="projects.html" class="btn btn-primary cta-btn">
+                            <span class="btn-text">View My Work</span>
+                            <i class="fas fa-arrow-right btn-icon"></i>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary cta-btn">
+                            <span class="btn-text">Contact Me</span>
+                            <i class="fas fa-envelope btn-icon"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="asset/IMG_2105-removebg-preview.png" alt="Titu Nath Profile Picture">
+                    <div class="image-container">
+                        <div class="image-glow"></div>
+                        <img src="asset/IMG_2105-removebg-preview.png" alt="Titu Nath Profile Picture" class="profile-img">
+                        <div class="image-decoration"></div>
+                        <div class="image-particles"></div>
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced floating elements for animation -->
+        <div class="floating-elements">
+            <div class="floating-element element-1" data-speed="2">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="floating-element element-2" data-speed="3">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="floating-element element-3" data-speed="1.5">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="floating-element element-4" data-speed="2.5">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="floating-element element-5" data-speed="1.8">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="floating-element element-6" data-speed="2.2">
+                <i class="fas fa-atom"></i>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow-down">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-left">
+                    <p>&copy; 2025 All Rights Reserved</p>
+                </div>
+                
+                <div class="footer-section footer-center">
             <div class="social-links">
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+                        <a href="https://github.com/" target="_blank" class="social-link" data-tooltip="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                        <a href="https://www.linkedin.com/in/titu-nath" target="_blank" class="social-link" data-tooltip="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                        <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank" class="social-link" data-tooltip="ResearchGate">
+                    <i class="fab fa-researchgate"></i>
+                </a>
+                        <a href="mailto:nath1905087@stud.kuet.ac.bd" class="social-link" data-tooltip="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-right">
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="research.html">Research</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="skills.html">Skills</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Anime.js library (Latest v4) -->
+    <script type="module">
+        // Import Anime.js v4 as ES module
+        import { animate, stagger } from 'https://cdn.skypack.dev/animejs';
+        window.animeJS = { animate, stagger };
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html> 

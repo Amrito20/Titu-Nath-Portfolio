@@ -6,6 +6,19 @@
     <title>Activities - Titu Nath</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js for Vanta backgrounds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js effects -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.cells.min.js"></script>
     <style>
         .activities-section {
             padding: 120px 0 60px;
@@ -43,27 +56,29 @@
         .activities-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 50px;
         }
         
         .activity-box {
             background-color: var(--accent-color);
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            min-height: 400px;
         }
         
         .activity-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 200, 255, 0.2);
         }
         
         .activity-box h2 {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: var(--primary-color);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .activity-box h2::after {
@@ -79,7 +94,8 @@
         .activity-item {
             position: relative;
             padding-left: 30px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
         }
         
         .activity-item::before {
@@ -112,7 +128,8 @@
         .position-timeline {
             position: relative;
             padding-left: 35px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
         }
         
         .position-timeline::before {
@@ -230,26 +247,62 @@
     </style>
 </head>
 <body>
+    <!-- Animated background container -->
+    <div id="vanta-bg" class="vanta-background"></div>
+    
+    <!-- Page loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html">Titu Nath</a>
+                    <a href="index.html" class="logo-text">
+                        <span class="logo-char">T</span>
+                        <span class="logo-char">i</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">u</span>
+                        <span class="logo-char"> </span>
+                        <span class="logo-char">N</span>
+                        <span class="logo-char">a</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">h</span>
+                    </a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="achievements.html">Achievements</a></li>
-                    <li><a href="activities.html" class="active">Activities</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" class="nav-item" data-text="Home">Home</a></li>
+                    <li><a href="about.html" class="nav-item" data-text="About">About</a></li>
+                    <li><a href="research.html" class="nav-item" data-text="Research">Research</a></li>
+                    <li><a href="projects.html" class="nav-item" data-text="Projects">Projects</a></li>
+                    <li><a href="skills.html" class="nav-item" data-text="Skills">Skills</a></li>
+                    <li><a href="achievements.html" class="nav-item" data-text="Achievements">Achievements</a></li>
+                    <li><a href="activities.html" class="active nav-item" data-text="Activities">Activities</a></li>
+                    <li><a href="contact.html" class="nav-item" data-text="Contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="nav-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <div class="theme-icon">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </button>
+                    <button class="bg-toggle" id="bgToggle" aria-label="Change background effect">
+                        <i class="fas fa-magic"></i>
+                        <span class="bg-toggle-text">Background</span>
+                    </button>
+                    <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -455,15 +508,43 @@
 
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+            <div class="footer-content">
+                <div class="footer-section footer-left">
+                    <p>&copy; 2025 All Rights Reserved</p>
+                </div>
+                
+                <div class="footer-section footer-center">
+                    <div class="social-links">
+                        <a href="https://github.com/" target="_blank" class="social-link" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/titu-nath" target="_blank" class="social-link" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank" class="social-link" data-tooltip="ResearchGate">
+                            <i class="fab fa-researchgate"></i>
+                        </a>
+                        <a href="mailto:nath1905087@stud.kuet.ac.bd" class="social-link" data-tooltip="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-right">
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="research.html">Research</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="skills.html">Skills</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Anime.js -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html> 

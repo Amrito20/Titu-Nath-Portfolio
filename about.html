@@ -6,6 +6,19 @@
     <title>About Me - Titu Nath</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js for Vanta backgrounds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js effects -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.cells.min.js"></script>
     <style>
         .about-section {
             padding: 120px 0 60px;
@@ -18,12 +31,92 @@
         }
         
         .about-image {
-            flex: 1;
+            position: relative;
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .about-image img {
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .about-image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .about-image-glow {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.3;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        .about-profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+        }
+        
+        .about-profile-img:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+        }
+        
+        .about-image-decoration {
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            border: 2px dashed var(--primary-color);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+            opacity: 0.6;
+        }
+        
+        .about-image-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .about-image-particles::before,
+        .about-image-particles::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: particle 4s linear infinite;
+        }
+        
+        .about-image-particles::before {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .about-image-particles::after {
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
         }
         
         .about-text {
@@ -224,26 +317,61 @@
     </style>
 </head>
 <body>
+    <!-- Animated background container -->
+    <div id="vanta-bg" class="vanta-background"></div>
+    
+    <!-- Page loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
     <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html">Titu Nath</a>
+                    <a href="index.html" class="logo-text">
+                        <span class="logo-char">T</span>
+                        <span class="logo-char">i</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">u</span>
+                        <span class="logo-char"> </span>
+                        <span class="logo-char">N</span>
+                        <span class="logo-char">a</span>
+                        <span class="logo-char">t</span>
+                        <span class="logo-char">h</span>
+                    </a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="achievements.html">Achievements</a></li>
-                    <li><a href="activities.html">Activities</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" class="nav-item" data-text="Home">Home</a></li>
+                    <li><a href="about.html" class="active nav-item" data-text="About">About</a></li>
+                    <li><a href="research.html" class="nav-item" data-text="Research">Research</a></li>
+                    <li><a href="projects.html" class="nav-item" data-text="Projects">Projects</a></li>
+                    <li><a href="skills.html" class="nav-item" data-text="Skills">Skills</a></li>
+                    <li><a href="achievements.html" class="nav-item" data-text="Achievements">Achievements</a></li>
+                    <li><a href="activities.html" class="nav-item" data-text="Activities">Activities</a></li>
+                    <li><a href="contact.html" class="nav-item" data-text="Contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="nav-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <div class="theme-icon">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </button>
+                    <button class="bg-toggle" id="bgToggle" aria-label="Change background effect">
+                        <i class="fas fa-magic"></i>
+                        <span class="bg-toggle-text">Background</span>
+                    </button>
+                    <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -253,9 +381,14 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="asset/IMG_2105-removebg-preview.png" alt="Titu Nath Profile Picture">
+                    <div class="about-image-container">
+                        <div class="about-image-glow"></div>
+                        <img src="asset/IMG_2105-removebg-preview.png" alt="Titu Nath Profile Picture" class="about-profile-img">
+                        <div class="about-image-decoration"></div>
+                        <div class="about-image-particles"></div>
+                    </div>
                 </div>
-                <div class="about-text">
+                <div class="about-text text-card">
                     <h1>About Me</h1>
                     <p>As a recent Mechanical Engineering graduate from KUET with a strong academic record (CGPA: 3.62/4.00), I have a proven history of success in national and international technical competitions and leadership experience that showcases my innovative thinking and dedication to excellence. My passion lies in biomechanics, bioengineering, cardiovascular fluid mechanics, hemodynamics, advanced fluid dynamics, multiphase flow, aerodynamics, heat-transfer problems, and composite materials.</p>
                     <p>While maintaining academic excellence in research, I've actively led formula student racing teams and innovative engineering projects that have sharpened my technical expertise and problem-solving capabilities. Complementing my professional development, my dedication to organizing life-saving blood donation networks during emergencies has instilled a profound sense of social responsibility. This unique combination of engineering acumen and humanitarian commitment drives my ambition to develop solutions that address complex technical challenges while creating meaningful impact for society.</p>
@@ -263,12 +396,12 @@
                 </div>
             </div>
 
-            <div class="professional-summary">
+            <div class="professional-summary text-card">
                 <h2>Professional Summary</h2>
                 <p>I am enthusiastic about researching biomechanics, bioengineering, cardiovascular fluid mechanics, hemodynamics, advanced fluid dynamics, multiphase flow, aerodynamics, heat-transfer related problems, and composite materials. I am eager to work on collaborative mechanical engineering projects (Like: Control Engineering) to solve complex challenges.</p>
             </div>
             
-            <div class="education-experience">
+            <div class="education-experience text-card">
                 <div class="column">
                     <h2>Education</h2>
                     <div class="timeline-item">
@@ -342,15 +475,47 @@
 
     <footer>
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-left">
+                    <p>&copy; 2025 All Rights Reserved</p>
+                </div>
+                
+                <div class="footer-section footer-center">
             <div class="social-links">
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/titu-nath" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+                        <a href="https://github.com/" target="_blank" class="social-link" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/titu-nath" target="_blank" class="social-link" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Titu-Nath?ev=hdr_xprf" target="_blank" class="social-link" data-tooltip="ResearchGate">
+                            <i class="fab fa-researchgate"></i>
+                        </a>
+                        <a href="mailto:nath1905087@stud.kuet.ac.bd" class="social-link" data-tooltip="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-right">
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="research.html">Research</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="skills.html">Skills</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2024 Titu Nath. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Anime.js library (Latest v4) -->
+    <script type="module">
+        // Import Anime.js v4 as ES module
+        import { animate, stagger } from 'https://cdn.skypack.dev/animejs';
+        window.animeJS = { animate, stagger };
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html> 
