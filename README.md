@@ -1,5 +1,7 @@
 # Titu Nath - Portfolio Website
 
+https://amrito20.github.io/Titu-Nath-Portfolio/
+
 A modern, responsive portfolio website for Titu Nath, a mechanical engineering student at KUET, featuring his projects, skills, achievements, and activities.
 
 ## Features
